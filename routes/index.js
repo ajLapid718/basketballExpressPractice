@@ -47,6 +47,11 @@ router.get('/team/:id', function(req, res, next) {
   }).catch(err => console.log(err));
 });
 
+// An add page to add a player to the database aka LocalHost:3000/player/add;
+router.get('/player/add', function(req, res, next) {
+  res.sendFile('addPlayer.html', {'root': 'views'}); // specify root directory where html file is housed for file path;
+})
+
 // A show page listing one specific player aka LocalHost:3000/player/1;
 router.get('/player/:id', function(req, res, next) {
   let targetPlayerID = req.params.id;

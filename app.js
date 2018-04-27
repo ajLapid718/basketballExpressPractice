@@ -14,7 +14,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 // GET-PUT-POST-DELETE-CRUD;
 app.use(router);
 
-// Listener;
-app.listen(3000, function() {
-  console.log('Server is up and running!');
-});
+// Database Synchronization and Listener;
+models.db.sync({force: true}).then(function () {
+  console.log('All tables created!');
+  app.listen(3000, function() {
+    console.log('Server is up and running!');
+  });
+}).catch(console.error.bind(console));

@@ -7,22 +7,50 @@ const Player = models.Player;
 module.exports = router;
 
 // GET-PUT-POST-DELETE-CRUD;
+// INDEX-SHOW-NEW-CREATE-EDIT-UPDATE-DESTROY;
 
 // The homepage aka LocalHost:3000;
 router.get('/', function(req, res, next) {
   res.send('Hello world! This is the home page.');
 });
 
-// An index page listing all of the teams;
+// An index page listing all of the teams aka LocalHost:3000/allTeams;
 router.get('/allTeams', function(req, res, next) {
   let allTeams = Team.findAll().then(function(teams) {
     res.json(teams);
   }).catch(err => console.log(err));
 });
 
-// An index page listing all of the players;
+// An index page listing all of the players aka LocalHost:3000/allPlayers;
 router.get('/allPlayers', function(req, res, next) {
   let allPlayers = Player.findAll().then(function(players) {
     res.json(players);
+  }).catch(err => console.log(err));
+});
+
+/* A show page listing one specific team aka LocalHost:3000/Boston;
+router.get('/:cityName', function(req, res, next) {
+  let targetCityName = req.params.cityName;
+  Team.findOne({where: {
+    cityName: targetCityName
+  }}).then(function(target) {
+    res.json(target);
+  }).catch(err => console.log(err));
+});
+*/
+
+// A show page listing one specific team aka LocalHost:3000/team/1;
+router.get('/team/:id', function(req, res, next) {
+  let targetTeamID = req.params.id;
+  Team.findById(targetTeamID).then(function(target) {
+    res.json(target);
+  }).catch(err => console.log(err));
+});
+
+// A show page listing one specific player aka LocalHost:3000/player/1;
+router.get('/player/:id', function(req, res, next) {
+  let targetPlayerID = req.params.id;
+  Player.findById(targetPlayerID).then(function(target) {
+    res.json(target);
   }).catch(err => console.log(err));
 });

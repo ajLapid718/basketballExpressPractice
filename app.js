@@ -2,9 +2,12 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 // Middleware;
 app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // GET-PUT-POST-DELETE-CRUD;
 app.get('/', function(req, res, next) {

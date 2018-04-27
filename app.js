@@ -4,8 +4,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const router = require ('./routes/index.js');
-
-// REMINDER: In the near future, like after this commit, require models and sync to the database;
+const models = require('./models/index.js');
 
 // Middleware;
 app.use(morgan('dev'));

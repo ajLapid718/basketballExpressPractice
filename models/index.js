@@ -32,3 +32,5 @@ let Player = db.define('player', {
   }
 
 });
+
+module.exports = { db, Team, Player };

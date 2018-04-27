@@ -5,12 +5,15 @@ let Team = db.define('team', {
 
   cityName: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
 
   teamName: {
     type: Sequelize.STRING,
     allowNull: false
+    validate: {
+      isAlpha: true // verifies if the teamName is solely composed of letters;
+    }
   }
 
 });
@@ -24,12 +27,20 @@ let Player = db.define('player', {
 
   position: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isAlpha: true,
+      len: [1,2]
+    }
   },
 
   jerseyNum: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isNumeric: true,
+      len: [1,2]
+    }
   }
 
 });

@@ -5,15 +5,12 @@ let Team = db.define('team', {
 
   cityName: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: false
   },
 
   teamName: {
     type: Sequelize.STRING,
     allowNull: false
-    validate: {
-      isAlpha: true // verifies if the teamName is solely composed of letters;
-    }
   }
 
 });

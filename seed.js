@@ -1,23 +1,19 @@
 const models = require('./models/index.js');
 const Team = models.Team;
 const Player = models.Player;
+const everyTeam = require('./teamDataFromNBA.js');
 
 function populateDatabase() {
-  // Team Seeds;
-  Team.create({
-    cityName: 'Miami',
-    teamName: 'Heat'
-  });
-
-  Team.create({
-    cityName: 'New York',
-    teamName: 'Knicks'
-  });
-
-  Team.create({
-    cityName: 'Boston',
-    teamName: 'Celtics'
-  });
+  // Team Seeds for All Thirty NBA Teams;
+  for (let i = 0; i < everyTeam.length; i++) {
+    let currentTeam = everyTeam[i];
+    let currentTeamCityName = currentTeam.location;
+    let currentTeamSportsName = currentTeam.simpleName;
+    Team.create({
+      cityName: currentTeamCityName,
+      teamName: currentTeamSportsName
+    })
+  }
   // Player Seeds;
   Player.create({
     fullName: 'Dwyane Wade',

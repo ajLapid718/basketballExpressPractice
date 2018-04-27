@@ -12,8 +12,6 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// Consider using something to render (like Nunjucks) as well as serving up static folder information;
-
 // GET-PUT-POST-DELETE-CRUD;
 app.use(router);
 

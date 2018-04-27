@@ -1,6 +1,10 @@
 // Requirements;
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
+
+// Middleware;
+app.use(morgan('dev'));
 
 // GET-PUT-POST-DELETE-CRUD;
 app.get('/', function(req, res, next) {

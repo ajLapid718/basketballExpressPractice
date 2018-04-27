@@ -21,3 +21,5 @@ models.db.sync({force: true}).then(function () {
     console.log('Server is up and running!');
   });
 }).catch(console.error.bind(console));
+
+// Successfully executed: CREATE DATABASE basketball; 

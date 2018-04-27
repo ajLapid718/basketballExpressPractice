@@ -16,4 +16,4 @@ app.use(router);
 // Listener;
 app.listen(3000, function() {
   console.log('Server is up and running!');
-})
+});

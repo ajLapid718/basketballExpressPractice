@@ -29,6 +29,7 @@ let Player = db.define('player', {
 
   jerseyNum: {
     type: Sequelize.INTEGER,
+    allowNull: false
   }
 
 });

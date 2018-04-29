@@ -13,6 +13,12 @@ let Team = db.define('team', {
     allowNull: false
   }
 
+}, {
+    getterMethods: {
+      fullTeamName: function() {
+        return this.getDataValue('cityName') + ' ' + this.getDataValue('teamName');
+      }
+    }
 });
 
 let Player = db.define('player', {

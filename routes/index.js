@@ -71,6 +71,21 @@ router.get('/player/delete', function(req, res, next) {
   res.sendFile('deletePlayer.html', {'root': 'views'});
 });
 
+// // An edit page to edit a player in the database aka LocalHost:3000/player/edit;
+// router.get('/player/edit', function(req, res, next) {
+//   res.sendFile('editPlayer.html', {'root': 'views'}); // specify root directory where html file is housed for file path;
+// });
+
+// // An EDIT (PUT) route to successfully edit a player;
+// router.put('/players/edit/:id', function(req, res, next) {
+//   Player.update(req.body, {
+//     where: {
+//       id: req.params.id
+//     },
+//     returning: true
+//   }).then(success => console.log("success")).catch(err => console.log(err));
+// });
+
 // A show page listing one specific player aka LocalHost:3000/player/1;
 router.get('/player/:id', function(req, res, next) {
   let targetPlayerID = req.params.id;

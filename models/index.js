@@ -49,11 +49,27 @@ let Player = db.define('player', {
 
 });
 
-Player.addHook('afterSave', player => {
-  player.setTeammates(1);
+Player.prototype.gatherTeammates = async function() {
+  let targetTeamId = this.teamId;
+
+  let arrayOfTeammates = await Player.findAll({
+    where: {
+      teamId: targetTeamId
+    }
+  })
+
+  this.teammates = [];
+
+  for (let i = 0; i < arrayOfTeammates.length; i++) {
+    let teammate = arrayOfTeammates[i];
+    if (teammate.fullName === this.fullName) continue;
+    this.teammates.push(teammate);
+  }
+
+  this.setTeammates(this.teammates);
   // what this is doing: take this instance of a player...then set his teammates to be a player with a playerId of 1 (Dwyane Wade);
   // what we want: take this instance of a player...then set his teammates to be any and all players who have the same teamId;
-})
+}
 
 Player.belongsToMany(Player, {as: "teammates", through: "teammate_table"})
 Player.belongsTo(Team); // Gives each instance of Player a field called teamId;

@@ -71,8 +71,8 @@ Player.prototype.gatherTeammates = async function() {
   // what we want: take this instance of a player...then set his teammates to be any and all players who have the same teamId;
 }
 
-Player.belongsToMany(Player, {as: "teammates", through: "teammate_table"})
-Player.belongsTo(Team); // Gives each instance of Player a field called teamId;
-Team.hasMany(Player); // When viewing a team JSON object, an array of players is available;
+Player.belongsTo(Team); // One-To-One: Gives each instance of Player a field called teamId. When viewing a player JSON object, we can eager load and include their associated team;
+Team.hasMany(Player); // One-To-Many: Gives each instance of Team the accessors of getPlayers() and setPlayers(). When viewing a team JSON object, an array of players is available;
+Player.hasMany(Player, {as: "teammates"}) // Many-To-Many;
 
 module.exports = { db, Team, Player };

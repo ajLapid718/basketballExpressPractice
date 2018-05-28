@@ -50,5 +50,6 @@ let Player = db.define('player', {
 });
 
 Player.belongsTo(Team); // Gives each instance of Player a field called teamId;
+Team.hasMany(Player);
 
 module.exports = { db, Team, Player };

@@ -16,9 +16,15 @@ router.get('/', function(req, res, next) {
 
 // An index page listing all of the teams aka LocalHost:3000/allTeams;
 router.get('/allTeams', function(req, res, next) {
-  let allTeams = Team.findAll().then(function(teams) {
+  let allTeams = Team.findAll({
+    include: {
+      model: Player
+    }
+  })
+  .then(function(teams) {
     res.json(teams);
-  }).catch(err => console.log(err));
+  })
+  .catch(err => console.log(err));
 });
 
 // An index page listing all of the players aka LocalHost:3000/allPlayers as well as the respective team each player belongs to;

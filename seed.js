@@ -35,6 +35,13 @@ function populateDatabase() {
     position: 'PG',
     teamId: 2
   });
+
+  Player.create({
+    fullName: 'Jayson Tatum',
+    jerseyNum: 0,
+    position: 'SF',
+    teamId: 2
+  });
 };
 
 module.exports = { populateDatabase };

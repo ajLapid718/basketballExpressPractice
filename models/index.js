@@ -49,6 +49,10 @@ let Player = db.define('player', {
 
 });
 
+Player.addHook('afterSave', player => {
+  player.setTeammates(1);
+})
+
 Player.belongsToMany(Player, {as: "teammates", through: "teammate_table"})
 Player.belongsTo(Team); // Gives each instance of Player a field called teamId;
 Team.hasMany(Player); // When viewing a team JSON object, an array of players is available;

@@ -11,14 +11,15 @@ let Team = db.define('team', {
   teamName: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+
+  fullTeamName: {
+    type: Sequelize.VIRTUAL,
+    get: function() {
+      return this.getDataValue('cityName') + ' ' + this.getDataValue('teamName');
+    }
   }
 
-}, {
-    getterMethods: {
-      fullTeamName: function() {
-        return this.getDataValue('cityName') + ' ' + this.getDataValue('teamName');
-      }
-    }
 });
 
 let Player = db.define('player', {

@@ -19,28 +19,32 @@ function populateDatabase() {
     fullName: 'Dwyane Wade',
     jerseyNum: 3,
     position: 'SG',
-    teamId: 16
+    teamId: 16,
+    teammateId: 1
   });
 
   Player.create({
     fullName: 'Kristaps Porzingis',
     jerseyNum: 6,
     position: 'PF',
-    teamId: 20
+    teamId: 20,
+    teammateId: 2
   });
 
   Player.create({
     fullName: 'Kyrie Irving',
     jerseyNum: 11,
     position: 'PG',
-    teamId: 2
+    teamId: 2,
+    teammateId: 777
   });
 
   Player.create({
     fullName: 'Jayson Tatum',
     jerseyNum: 0,
     position: 'SF',
-    teamId: 2
+    teamId: 2,
+    teammateId: 777
   });
 };
 

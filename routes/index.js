@@ -30,9 +30,7 @@ router.get('/allTeams', function(req, res, next) {
 // An index page listing all of the players aka LocalHost:3000/allPlayers as well as the respective team each player belongs to;
 router.get('/allPlayers', function(req, res, next) {
   let allPlayers = Player.findAll({
-    include: {
-      model: Team
-    }
+    include: [Team, {model: Player, as: "teammates"}],
   })
   .then(function(players) {
     res.json(players);

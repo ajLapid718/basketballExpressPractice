@@ -49,7 +49,8 @@ let Player = db.define('player', {
 
 });
 
+Player.belongsToMany(Player, {as: "teammates", through: "teammate_table"})
 Player.belongsTo(Team); // Gives each instance of Player a field called teamId;
-Team.hasMany(Player);
+Team.hasMany(Player); // When viewing a team JSON object, an array of players is available;
 
 module.exports = { db, Team, Player };

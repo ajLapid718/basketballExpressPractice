@@ -24,6 +24,14 @@ function populateDatabase() {
   });
 
   Player.create({
+    fullName: 'AJ Lapid',
+    jerseyNum: 17,
+    position: 'PG',
+    teamId: 2,
+    teammateId: 2
+  });
+
+  Player.create({
     fullName: 'Jayson Tatum',
     jerseyNum: 0,
     position: 'SF',

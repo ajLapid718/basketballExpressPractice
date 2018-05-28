@@ -21,11 +21,17 @@ router.get('/allTeams', function(req, res, next) {
   }).catch(err => console.log(err));
 });
 
-// An index page listing all of the players aka LocalHost:3000/allPlayers;
+// An index page listing all of the players aka LocalHost:3000/allPlayers as well as the respective team each player belongs to;
 router.get('/allPlayers', function(req, res, next) {
-  let allPlayers = Player.findAll().then(function(players) {
+  let allPlayers = Player.findAll({
+    include: {
+      model: Team
+    }
+  })
+  .then(function(players) {
     res.json(players);
-  }).catch(err => console.log(err));
+  })
+  .catch(err => console.log(err));
 });
 
 /* A show page listing one specific team aka LocalHost:3000/Boston;

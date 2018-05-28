@@ -51,6 +51,8 @@ let Player = db.define('player', {
 
 Player.addHook('afterSave', player => {
   player.setTeammates(1);
+  // what this is doing: take this instance of a player...then set his teammates to be a player with a playerId of 1 (Dwyane Wade);
+  // what we want: take this instance of a player...then set his teammates to be any and all players who have the same teamId;
 })
 
 Player.belongsToMany(Player, {as: "teammates", through: "teammate_table"})
